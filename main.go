@@ -27,11 +27,10 @@ func main() {
 
 	switch os.Args[1] {
 	case "version":
-		cmd = newVersionCommand()
+		// cmd = newVersionCommand()
 	default:
 		usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
 	}
 
 	cmd.Init(os.Args[2:])
 	cmd.Run()
-}
