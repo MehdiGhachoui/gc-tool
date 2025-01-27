@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var usage = `Usage: gc command [options] A simple tool to generate and manage custom templates Options: Commands: add Adds a template to the collection from a local file edit Uses the default text editor to modify a stored template list Lists all stored templates create Generates an instance of a template in the current directory delete Removes a stored template version Prints version info to console `
+var usage = `This is a custom Command line template`
 
 func usageAndExit(msg string) {
 	if msg != "" {
@@ -18,19 +18,23 @@ func usageAndExit(msg string) {
 }
 
 func main() {
+	// var cmd *Command
+
 	flag.Usage = func() {
 		fmt.Fprint(os.Stderr, fmt.Sprint(usage))
 	}
-	usageAndExit("")
 
-	var cmd *Command
+	fmt.Println("I am ", os.Args[1])
 
-	switch os.Args[1] {
-	case "version":
-		// cmd = newVersionCommand()
-	default:
-		usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
-	}
+	// switch os.Args[1] {
+	// case "version":
+	// 	cmd = NewVersionCommand()
+	// case "add":
+	// 	cmd = NewAddCommand()
+	// default:
+	// 	usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
+	// }
 
-	cmd.Init(os.Args[2:])
-	cmd.Run()
+	// cmd.Init(os.Args[2:])
+	// cmd.Run()
+}
