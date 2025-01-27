@@ -18,23 +18,25 @@ func usageAndExit(msg string) {
 }
 
 func main() {
-	// var cmd *Command
+	var cmd *Command
 
-	flag.Usage = func() {
-		fmt.Fprint(os.Stderr, fmt.Sprint(usage))
+	if len(os.Args) > 1 {
+		switch os.Args[1] {
+		case "version":
+			cmd = NewVersionCommand()
+		case "add":
+			cmd = NewAddCommand()
+		default:
+			usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
+		}
+
+		cmd.Init(os.Args[2:])
+		cmd.Run()
+	} else {
+		flag.Usage = func() {
+			fmt.Fprint(os.Stderr, fmt.Sprint(usage))
+		}
+		usageAndExit("")
 	}
 
-	fmt.Println("I am ", os.Args[1])
-
-	// switch os.Args[1] {
-	// case "version":
-	// 	cmd = NewVersionCommand()
-	// case "add":
-	// 	cmd = NewAddCommand()
-	// default:
-	// 	usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
-	// }
-
-	// cmd.Init(os.Args[2:])
-	// cmd.Run()
 }
