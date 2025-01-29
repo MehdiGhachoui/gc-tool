@@ -26,6 +26,8 @@ func main() {
 			cmd = NewVersionCommand()
 		case "add":
 			cmd = NewAddCommand()
+		case "edit":
+			cmd = NewEditCommand()
 		default:
 			usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
 		}
