@@ -28,6 +28,8 @@ func main() {
 			cmd = NewAddCommand()
 		case "edit":
 			cmd = NewEditCommand()
+		case "delete":
+			cmd = NewDeleteCommand()
 		default:
 			usageAndExit(fmt.Sprintf("gc: '%s' is not a gc command.\n", os.Args[1]))
 		}
